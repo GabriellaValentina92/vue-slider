@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="carousel">
+        <div class="slidedpic">
+          <img
+            v-for="(item, index)  in images"
+            :src="item.image"
+            alt=""
+            :class="{active : index == activeIndex}"
+          />
+          <!-- <img src="img/02.webp" alt="">
+				<img src="img/03.webp" alt="">
+				<img src="img/04.webp" alt="">
+				<img src="img/05.webp" alt=""> -->
+          <div
+            class="content"
+            v-for="(item, index) in images"
+            :class="{active : index == activeIndex}"
+          >
+            <h3>{{item.title}}</h3>
+            <p>{{item.text}}</p>
+          </div>
+        </div>
+
+        <!-- div con le miniature -->
+        <div class="btn-control">
+          <div class="controls">
+            <i
+              class="bi bi-arrow-up-circle-fill btn btn-prev"
+              @click="btnPrev"
+            ></i>
+            <i
+              class="bi bi-arrow-down-circle-fill btn btn-next"
+              @click="btnNext"
+            ></i>
+          </div>
+          <img
+            v-for="(item, index)  in images"
+            :src="item.image"
+            alt=""
+            :class="{active : index == activeIndex}"
+            @click="setActiveIndex(index)"
+          />
+          <!-- <img src="img/02.webp" alt="">
+				<img src="img/03.webp" alt="">
+				<img src="img/04.webp" alt="">
+				<img src="img/05.webp" alt=""> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
